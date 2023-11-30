@@ -1,4 +1,3 @@
-//llamamos todo lo que nos interesa del HTML
 const input = document.getElementById('searchInput');
 const buscadorSearch = document.getElementById ('searchBtn')
 const prevBtn = document.getElementById('prevBtn');
@@ -9,7 +8,6 @@ const selector = document.getElementById('selector');
 let paginaIncial =`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`
 let nextpage;
 let prevpage;
-
 //creamos la funcion que nos llame al fetch de pokemon
 const ObtenerPokemons = async(pagina) =>{
     try{
@@ -120,3 +118,4 @@ selector.addEventListener('click',()=>{
 
 //llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
  ObtenerPokemons(paginaIncial);
+
