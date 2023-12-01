@@ -24,10 +24,10 @@ const ObtenerPokemons = async(pagina) =>{
         nextpage = data.next;
         prevpage = data.previous
         let todos = data.results.nombre;
-        todos.forEach(element =>{
+        todos.forEach((element) =>{
         console.log(data)
     pokemonNumero(element)
-        }    
+        } )   
     }    
     catch (error){
         console.log('error', error)
