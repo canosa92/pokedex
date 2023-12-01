@@ -67,7 +67,7 @@ header {
 }
 .contenedorPokemon{
   width: 200px;
-  height: 300px;
+  height: auto;
   padding: 1rem;
   border: 2px solid rgb(116, 116, 116);
   border-radius: 5px;
@@ -94,11 +94,16 @@ overflow: hidden;
   align-items: center;
   text-align: center;
 }
-
-.contenedorPokemon:hover {
-height: auto;
+.oculto{
+  display:grid;
+  grid-template-rows:0fr;
+  transition: 0.3s grid-template-rows ease
+  
+.contenedorPokemon:hover .oculto{
+grid-template-rows:1fr;
 }
-
+.oculto > article{
+  overflow:hidden;
 
 .estadisticas{
   width: 200px;
