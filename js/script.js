@@ -142,11 +142,11 @@ selector.addEventListener('click',()=>{
  })
 
  azar.addEventListener('click',()=>{
-    limite =selector.value;
-    let random = Math.floor((Math.random() * (300- 1 + 1)) + 1);
-    visible.innerHTML = ''
-    paginaIncial = `https://pokeapi.co/api/v2/pokemon?limit=${limite}&offset=${random}`
-    ObtenerPokemons(paginaIncial);
+     visible.innerHTML=''
+     for (let i =0; i<=limite;i++){
+    let random = Math.floor((Math.random() * (1225- 1 + 1)) ;
+    pokemonNumero(random)
+     }
  })
 
 //llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
