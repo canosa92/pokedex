@@ -1,73 +1,77 @@
+//Nos traemos todo lo que nos interesa del Html para poder trabjar con el 
 const input = document.getElementById('searchInput');
 const buscadorSearch = document.getElementById ('searchBtn')
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-const resetBtn = document.getElementById('resetBtn');
 const visible = document.getElementById('app');
 const selector = document.getElementById('selector');
-let paginaIncial =`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`
+const azar = document.getElementById('azarBtn')
 
+//creamos las variables para hacer la paginacion
+let paginaIncial =`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`
 let nextpage;
 let prevpage;
-//creamos la funcion que nos llame al fetch de pokemon
+let limite;
+
+//creamos la funcion para hacer la paginacion y para traernos el array de los pokemons
 const ObtenerPokemons = async(pagina) =>{
     try{
         const response = await fetch (pagina);
-       
         if(!response.ok){
             throw new Error( 'ha surgido un error', response.status)
         }
         const data = await response.json();
         nextpage = data.next;
         prevpage = data.previous
+        let todos = data.results;
+        for(let i = 0 ; i < todos.length ;i++){
+        let nombrePokemon=todos[i].name
+
         console.log(data)
-    pokemonInfo(data)
+    pokemonNumero(nombrePokemon)
+        }    
     }    
     catch (error){
         console.log('error', error)
     }
 }
-//
 
-
-//hacemos un bucle para hacer una peditcion al fetch y obtener los datos de los pokemon que queremos mostrar
-const pokemonInfo=async(data)=>{
+//hacemos otra peticion fetch para traernos los datos que nos interesa de los pokemons y los ponemos en el HTML
+const pokemonNumero=async(nombrePokemon)=>{
     try{
-    let todos = data.results;
-   
-
-   for(let i = 0 ; i < todos.length ;i++){
-
-    let nombrePokemon=todos[i].name
-
-    
-      const responseDescripcion = await  fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
-      const descripcion = await responseDescripcion.json()
-
-        let descripcionEspañol = descripcion.flavor_text_entries[26].flavor_text;
-
+//creamos un bucle con la cantidad de pokemon que nos devuelve la primera peticion
+  
+//con el nombre de los pokemons hacemos una peticion para que nos devuelva las descripciones       
+        const responseDescripcion = await  fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
+        const descripcion = await responseDescripcion.json()
+        let descripcionIngles = descripcion.flavor_text_entries[1].flavor_text; 
+      
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
         const pokemon = await response.json()
-        console.log(pokemon)
 
-         let name = pokemon.name.toUpperCase();
-         let img = pokemon.sprites.other["official-artwork"].front_default;
-         let id = pokemon.id
-         let type = pokemon.types[0].type.name;
-         let hp = pokemon.stats[0].stat.name.toUpperCase();
+        let name = pokemon.name.toUpperCase();
+        let img = pokemon.sprites.other["official-artwork"].front_default;
+        let id = pokemon.id
+        let habilidad1 =pokemon.abilities[0].ability.name
+        let habilidad2 =pokemon.abilities[1].ability.name
+        let type = pokemon.types[0].type.name;
         let hpNumero = pokemon.stats[0].base_stat;
-        let attack =pokemon.stats[1].stat.name.toUpperCase();
-        let attackNumero =pokemon.stats[1].base_stat;
-        let defense=pokemon.stats[2].stat.name.toUpperCase()
+        let ataqueNumero =pokemon.stats[1].base_stat;
         let defenseNumero =pokemon.stats[2].base_stat
-        let ataqueSpecial=pokemon.stats[3].stat.name.toUpperCase()
         let ataqueSpecialNumero =pokemon.stats[3].base_stat
-        let defensaSpecial=pokemon.stats[4].stat.name.toUpperCase()
         let defensaSpecialNumero =pokemon.stats[4].base_stat
-        let spreed=pokemon.stats[5].stat.name.toUpperCase()
         let spreedNumero =pokemon.stats[5].base_stat
 
- 
+        console.log(pokemon)
+        pintarPokemon(habilidad2,habilidad1,descripcionIngles,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero)
+   
+ } catch(error){
+    console.log('error', error)
+   }
+   }
+
+const pintarPokemon =(habilidad2,habilidad1,descripcionIngles,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero) =>{      
+     
         let infopokemon= `
          <div class="contenedorPokemon ${type}">
          <div class="pokemon-imagen">
@@ -76,43 +80,33 @@ const pokemonInfo=async(data)=>{
          <div class="pokemon-info">
          <h4>${id}.${name}</h4>
          <h3 class="tipo">${type}</h3>
-         <p> ${descripcionEspañol}</p>
+         <div class="habilidades">
+         <h4>${habilidad1}</h4>
+         <h4>${habilidad2}</h4>
+         </div>
+         <div class="oculto">
+         <div class="descripcion">
+         <p>${descripcionIngles}</p>
          </div>
          <div class="estadisticas">
-         <label for="${hpNumero}">${hp}</label>
-         <br>
+         <label for="${hpNumero}">HP</label>
          <progress id="${hpNumero}" max="100" value="${hpNumero}">${hpNumero}</progress>
-          <br>
-         <label for="${attackNumero}">${attack}</label>
-         <br>
-         <progress id="${attackNumero}" max="100" value="${attackNumero}">${attackNumero}</progress>
-         <br>
-         <label for="${defenseNumero}">${defense}</label>
-         <br>
+         <label for="${ataqueNumero}">ATTACK</label>
+         <progress id="${ataqueNumero}" max="100" value="${ataqueNumero}">${ataqueNumero}</progress>
+         <label for="${defenseNumero}">DEFENSE</label>
          <progress id="${defenseNumero}" max="100" value="${defenseNumero}">${defenseNumero}</progress>
-         <br>
-         <label for="${ataqueSpecialNumero}">${ataqueSpecial}</label>
-         <br>
+         <label for="${ataqueSpecialNumero}">SPECIAL ATTACK</label>
          <progress id="${ataqueSpecialNumero}" max="100" value="${ataqueSpecialNumero}">${ataqueSpecialNumero}</progress>
-         <br>
-         <label for="${defensaSpecialNumero}">${defensaSpecial}</label>
-         <br>
+         <label for="${defensaSpecialNumero}">SPECIAL DEFENSE</label>
          <progress id="${defensaSpecialNumero}" max="100" value="${defensaSpecialNumero}">${defensaSpecialNumero}</progress>
-         <br>
-         <label for="${spreedNumero}">${spreed}</label>
-         <br>
+         <label for="${spreedNumero}">SPREED</label>
          <progress id="${spreedNumero}" max="100" value="${spreedNumero}">${spreedNumero}</progress>
-         <br>
+         </div>
              </div>
              </div>`
              visible.innerHTML += infopokemon
      }
     // }
-    } catch (error) {
-        console.error("error")
-        }  
-    }
-
 
 //boton next
 nextBtn.addEventListener('click', () => {
@@ -131,38 +125,26 @@ prevBtn.addEventListener('click', () => {
 
 buscadorSearch.addEventListener('click',()=>{
 let search = input.value.toLocaleLowerCase();
- fetch(`https://pokeapi.co/api/v2/pokemon/${search}`)
- .then(response => response.json())
-    .then(data => {
-        console.log('b',data)
-        visible.innerHTML=''
-     
-        let name = data.name;
-        let img = data.sprites.front_shiny;
-     
-       let infopokemon= `
-        <div class="contenedorPokemon">
-        <img src="${img}" />
-        <h3> ${name}</h3>
-        
-            </div>`
-            visible.innerHTML += infopokemon
-        })
+visible.innerHTML=''
+pokemonNumero(search)
 })
-
-//reset
-resetBtn.addEventListener('click', () => {
-    visible.innerHTML =''
-    location.reload();
-   })
+  //  
 
 //para seleccionar cuantos pokemons queremos ver en cada pagina
 selector.addEventListener('click',()=>{
-    let limite = selector.value;
+    limite = selector.value;
      paginaIncial= `https://pokeapi.co/api/v2/pokemon?limit=${limite}&offset=0`
      console.log(paginaIncial)
      visible.innerHTML =''
      ObtenerPokemons(paginaIncial);
+ })
+
+ azar.addEventListener('click',()=>{
+    limite =selector.value;
+    let random = Math.floor((Math.random() * (300- 1 + 1)) + 1);
+    visible.innerHTML = ''
+    paginaIncial = `https://pokeapi.co/api/v2/pokemon?limit=${limite}&offset=${random}`
+    ObtenerPokemons(paginaIncial);
  })
 
 //llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
