@@ -23,12 +23,10 @@ const ObtenerPokemons = async(pagina) =>{
         const data = await response.json();
         nextpage = data.next;
         prevpage = data.previous
-        let todos = data.results;
-        for(let i = 0 ; i < todos.length ;i++){
-        let nombrePokemon=todos[i].name
-
+        let todos = data.results.nombre;
+        todos.forEach(element =>{
         console.log(data)
-    pokemonNumero(nombrePokemon)
+    pokemonNumero(element)
         }    
     }    
     catch (error){
