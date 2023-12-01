@@ -142,7 +142,7 @@ selector.addEventListener('click',()=>{
  azar.addEventListener('click',()=>{
      visible.innerHTML=''
      for (let i =0; i<=limite;i++){
-    let random = Math.floor((Math.random() * (1225- 1 + 1)));
+    let random = Math.floor((Math.random() * (1225- 1 + 1))+1);
     pokemonNumero(random)
      }
  })
