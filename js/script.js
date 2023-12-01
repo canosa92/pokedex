@@ -11,7 +11,7 @@ const azar = document.getElementById('azarBtn')
 let paginaIncial =`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`
 let nextpage;
 let prevpage;
-let limite;
+let limite=10;
 
 //creamos la funcion para hacer la paginacion y para traernos el array de los pokemons
 const ObtenerPokemons = async(pagina) =>{
@@ -23,11 +23,17 @@ const ObtenerPokemons = async(pagina) =>{
         const data = await response.json();
         nextpage = data.next;
         prevpage = data.previous
-        let todos = data.results.nombre;
-        todos.forEach((element) =>{
-        console.log(data)
-    pokemonNumero(element)
-        } )   
+
+        let todos = data.results;
+        
+        
+        for(let i = 0 ; i < todos.length ;i++){
+        let nombrePokemon=todos[i].name
+    
+
+    
+    pokemonNumero(nombrePokemon)
+        } 
     }    
     catch (error){
         console.log('error', error)
@@ -39,11 +45,18 @@ const pokemonNumero=async(nombrePokemon)=>{
     try{
 //creamos un bucle con la cantidad de pokemon que nos devuelve la primera peticion
   
-//con el nombre de los pokemons hacemos una peticion para que nos devuelva las descripciones       
-        const responseDescripcion = await  fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
-        const descripcion = await responseDescripcion.json()
-        let descripcionIngles = descripcion.flavor_text_entries[1].flavor_text; 
-      
+//con el nombre de los pokemons hacemos una peticion para que nos devuelva las descripciones   y la entrada    
+
+const pokemonDescripcion = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
+const fetchDescripcion = await pokemonDescripcion.json()
+console.log(fetchDescripcion)
+const flavortextentries =fetchDescripcion.flavor_text_entries
+const descripcionEspañol = descripcionPokemon(flavortextentries)
+
+
+
+//para conseguir otros valores que nos interesan
+
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
         const pokemon = await response.json()
 
@@ -52,7 +65,9 @@ const pokemonNumero=async(nombrePokemon)=>{
         let id = pokemon.id
         let habilidad1 =pokemon.abilities[0].ability.name
         let habilidad2 =pokemon.abilities[1].ability.name
-        let type = pokemon.types[0].type.name;
+        let type= pokemon.types[0].type.name
+        let types = pokemon.types.map(type =>type.type.name)
+        types =types.join('');
         let hpNumero = pokemon.stats[0].base_stat;
         let ataqueNumero =pokemon.stats[1].base_stat;
         let defenseNumero =pokemon.stats[2].base_stat
@@ -61,14 +76,14 @@ const pokemonNumero=async(nombrePokemon)=>{
         let spreedNumero =pokemon.stats[5].base_stat
 
         console.log(pokemon)
-        pintarPokemon(habilidad2,habilidad1,descripcionIngles,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero)
+        pintarPokemon(types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero)
    
  } catch(error){
     console.log('error', error)
    }
    }
 
-const pintarPokemon =(habilidad2,habilidad1,descripcionIngles,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero) =>{      
+const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero) =>{      
      
         let infopokemon= `
          <div class="contenedorPokemon ${type}">
@@ -77,7 +92,7 @@ const pintarPokemon =(habilidad2,habilidad1,descripcionIngles,name,img,id,type,h
          </div>
          <div class="pokemon-info">
          <h4>${id}.${name}</h4>
-         <h3 class="tipo">${type}</h3>
+         <h3 class="tipo${type}">${types}</h3>
          <div class="habilidades">
          <h4>${habilidad1}</h4>
          <h4>${habilidad2}</h4>
@@ -85,7 +100,7 @@ const pintarPokemon =(habilidad2,habilidad1,descripcionIngles,name,img,id,type,h
          <div class="oculto">
          <article>
          <div class="descripcion">
-         <p>${descripcionIngles}</p>
+         <p>${descripcionEspañol}</p>
          </div>
          <div class="estadisticas">
          <label for="${hpNumero}">HP</label>
@@ -107,6 +122,13 @@ const pintarPokemon =(habilidad2,habilidad1,descripcionIngles,name,img,id,type,h
              visible.innerHTML += infopokemon
      }
     // }
+function descripcionPokemon(flavortextentries){
+   
+    const descripcionEspañol = flavortextentries.find(entry =>
+        entry.language.name==='es');
+        return descripcionEspañol ? descripcionEspañol.flavor_text :
+        'No hay una descripción en español para este Pokémon'
+        }
 
 //boton next
 nextBtn.addEventListener('click', () => {
@@ -141,8 +163,9 @@ selector.addEventListener('click',()=>{
 
  azar.addEventListener('click',()=>{
      visible.innerHTML=''
-     for (let i =0; i<=limite;i++){
+     for (let i =0; i <limite;i++){
     let random = Math.floor((Math.random() * (1225- 1 + 1))+1);
+    console.log(random)
     pokemonNumero(random)
      }
  })

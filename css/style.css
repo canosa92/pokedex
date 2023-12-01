@@ -98,13 +98,13 @@ overflow: hidden;
   display:grid;
   grid-template-rows:0fr;
   transition: 0.3s grid-template-rows ease
-  
+}
 .contenedorPokemon:hover .oculto{
 grid-template-rows:1fr;
 }
 .oculto > article{
   overflow:hidden;
-
+}
 .estadisticas{
   width: 200px;
   display: flex;
@@ -139,7 +139,7 @@ segun el tipo de pokemon*/
 } 
 
 
-.tipo{
+.tipograss{
  background-color: #f37021;
  border: 1px red solid;
 }
