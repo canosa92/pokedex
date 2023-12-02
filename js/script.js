@@ -85,6 +85,8 @@ const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,i
      
         let infopokemon= `
          <div class="contenedorPokemon div${type}">
+         <div class="intro">
+         <div class="overlay">
          <div class="pokemon-imagen">
          <img src="${img}"/>
          </div>
@@ -106,7 +108,7 @@ const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,i
          <progress id="${hpNumero}" max="100" value="${hpNumero}">${hpNumero}</progress>
          <label for="${ataqueNumero}">ATTACK</label>
          <progress id="${ataqueNumero}" max="100" value="${ataqueNumero}">${ataqueNumero}</progress>
-        label for="${defenseNumero}">DEFENSE</label>
+        <label for="${defenseNumero}">DEFENSE</label>
          <progress id="${defenseNumero}" max="100" value="${defenseNumero}">${defenseNumero}</progress>
          <label for="${ataqueSpecialNumero}">SPECIAL ATTACK</label>
          <progress id="${ataqueSpecialNumero}" max="100" value="${ataqueSpecialNumero}">${ataqueSpecialNumero}</progress>
@@ -116,6 +118,8 @@ const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,i
          <progress id="${spreedNumero}" max="100" value="${spreedNumero}">${spreedNumero}</progress>
          </div>
          </article>
+             </div>
+             </div>
              </div>
                       </div>`
              visible.innerHTML += infopokemon
