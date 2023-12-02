@@ -173,3 +173,18 @@ background-image: url(/assets/img/poison.png);
 background-repeat: no-repeat;
 background-size: cover;
 } 
+.divnormal{
+  display: table;
+	width: 100%;
+	padding: 0;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background: #444 url("https://live.staticflickr.com/65535/52470810348_38bdeaa93b_o.jpg") center center no-repeat fixed;
+	background-size: cover;
+
+}
+
+.intro .overlay {
+	background: rgba(12, 12, 12, 0.795);
+}
