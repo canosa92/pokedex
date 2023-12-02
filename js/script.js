@@ -28,10 +28,7 @@ const ObtenerPokemons = async(pagina) =>{
         
         
         for(let i = 0 ; i < todos.length ;i++){
-        let nombrePokemon=todos[i].id
-    nombrePokemon.sort()
-
-    
+        let nombrePokemon=todos[i].name
     pokemonNumero(nombrePokemon)
         } 
     }    
