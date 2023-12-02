@@ -137,17 +137,39 @@ segun el tipo de pokemon*/
   background-repeat: no-repeat;
   background-size: cover;
 } 
-.grass{
- background-color: #f37021;
- border: 1px red solid;
+
+.divwater{
+  position: relative;
+  background-color: rgba(2, 204, 255, 0.301);;
+  overflow: hidden;
 }
-.divnormal{
-  width: 100%;
-  height: 100%;
-  z-index: ;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background: #444 url("https://live.staticflickr.com/65535/52470810348_38bdeaa93b_o.jpg") center center no-repeat fixed;
-	background-size: cover;
+
+.divwater:before{
+content: ' ';
+position: absolute;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(/assets/img/water.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+.divpoison{
+  position: relative;
+  background-color: rgba(170, 33, 250, 0.301);;
+  overflow: hidden;
 }
+
+.divpoison:before{
+content: ' ';
+position: absolute;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(/assets/img/poison.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 

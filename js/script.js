@@ -25,12 +25,11 @@ const ObtenerPokemons = async(pagina) =>{
         prevpage = data.previous
 
         let todos = data.results;
-        
-        
-        for(let i = 0 ; i < todos.length ;i++){
-        let nombrePokemon=todos[i].name
-    pokemonNumero(nombrePokemon)
-        } 
+        todos.sort((a,b)=>a.numeroPokedex - b.numeroPokedex)
+      
+        todos.forEach(todos => {
+            pokemonNumero(todos.name)
+    })
     }    
     catch (error){
         console.log('error', error)
@@ -43,19 +42,22 @@ const pokemonNumero=async(nombrePokemon)=>{
 //creamos un bucle con la cantidad de pokemon que nos devuelve la primera peticion
   
 //con el nombre de los pokemons hacemos una peticion para que nos devuelva las descripciones   y la entrada    
-
 const pokemonDescripcion = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
 const fetchDescripcion = await pokemonDescripcion.json()
-console.log(fetchDescripcion)
 const flavortextentries =fetchDescripcion.flavor_text_entries
+
+
 const descripcionEspañol = descripcionPokemon(flavortextentries)
-
-
-
 //para conseguir otros valores que nos interesan
 
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
         const pokemon = await response.json()
+        const habilidad=fetchDescripcion.abilities
+
+
+const detalles= detalle(habilidad)
+console.log(detalles)
+
 
         let name = pokemon.name.toUpperCase();
         let img = pokemon.sprites.other["official-artwork"].front_default;
@@ -64,7 +66,7 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
         let habilidad2 =pokemon.abilities[1].ability.name
         let type= pokemon.types[0].type.name
         let types = pokemon.types.map(type =>type.type.name)
-        types =types.join('');
+        types =types.join('   ')
         let hpNumero = pokemon.stats[0].base_stat;
         let ataqueNumero =pokemon.stats[1].base_stat;
         let defenseNumero =pokemon.stats[2].base_stat
@@ -72,19 +74,17 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
         let defensaSpecialNumero =pokemon.stats[4].base_stat
         let spreedNumero =pokemon.stats[5].base_stat
 
-        console.log(pokemon)
-        pintarPokemon(types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero)
+        pintarPokemon(detalles,types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero)
    
  } catch(error){
     console.log('error', error)
    }
    }
 
-const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero) =>{      
+const pintarPokemon =(detalles,types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero) =>{      
      
         let infopokemon= `
          <div class="contenedorPokemon div${type}">
-         <div class="overlay">
          <div class="pokemon-imagen">
          <img src="${img}"/>
          </div>
@@ -92,6 +92,7 @@ const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,i
          <h4>${id}.${name}</h4>
          <h3 class="tipo ${types}">${types}</h3>
          <div class="habilidades">
+         <h5>${detalles}</h5>
          <h4>${habilidad1}</h4>
          <h4>${habilidad2}</h4>
          </div>
@@ -116,8 +117,7 @@ const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,i
          </div>
          </article>
              </div>
-             </div>
-             </div>`
+                      </div>`
              visible.innerHTML += infopokemon
      }
     // }
@@ -127,9 +127,23 @@ function descripcionPokemon(flavortextentries){
         entry.language.name==='es');
         return descripcionEspañol ? descripcionEspañol.flavor_text :
         'No hay una descripción en español para este Pokémon'
-        }
+    }
 
-//boton next
+function detalle(habilidad){
+    let arrayhabilidades =[]
+    for (let i =0; i < habilidad;i++){
+        const urlHabilidad =abilities.ability.url
+        console.log(urlHabilidad)
+        const response = fetch(`${urlHabilidad}`)
+        const fetchHabilidad = response.json()
+ const abilityDetails ={
+    nombre:fetchHabilidad.name.find(name=>name.language.name ==='es').name,
+    descripcion:fetchHabilidad.effect_entries.find(entry=>entry.language.name ==='es').effect
+ }
+ arrayhabilidades.push(abilityDetails)
+    } return arrayhabilidades
+    }                                    
+
 nextBtn.addEventListener('click', () => {
     visible.innerHTML = '';
     ObtenerPokemons(nextpage)
@@ -171,4 +185,3 @@ selector.addEventListener('click',()=>{
 
 //llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
  ObtenerPokemons(paginaIncial);
-
