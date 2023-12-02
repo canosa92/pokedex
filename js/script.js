@@ -6,12 +6,12 @@ const nextBtn = document.getElementById('nextBtn');
 const visible = document.getElementById('app');
 const selector = document.getElementById('selector');
 const azar = document.getElementById('azarBtn')
-
+let limite=30;
 //creamos las variables para hacer la paginacion
-let paginaIncial =`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`
+let paginaIncial =`https://pokeapi.co/api/v2/pokemon?limit=${limite}&offset=0`
 let nextpage;
 let prevpage;
-let limite=10;
+
 
 //creamos la funcion para hacer la paginacion y para traernos el array de los pokemons
 const ObtenerPokemons = async(pagina) =>{
