@@ -55,8 +55,8 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
         const habilidad=fetchDescripcion.abilities
 
 
-const detalles= detalle(habilidad)
-console.log(detalles)
+//const detalles= detalle(habilidad)
+
 
 
         let name = pokemon.name.toUpperCase();
@@ -74,14 +74,14 @@ console.log(detalles)
         let defensaSpecialNumero =pokemon.stats[4].base_stat
         let spreedNumero =pokemon.stats[5].base_stat
 
-        pintarPokemon(detalles,types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero)
+        pintarPokemon(types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero)
    
  } catch(error){
     console.log('error', error)
    }
    }
 
-const pintarPokemon =(detalles,types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero) =>{      
+const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero) =>{      
      
         let infopokemon= `
          <div class="contenedorPokemon div${type}">
@@ -92,7 +92,7 @@ const pintarPokemon =(detalles,types,habilidad2,habilidad1,descripcionEspañol,n
          <h4>${id}.${name}</h4>
          <h3 class="tipo ${types}">${types}</h3>
          <div class="habilidades">
-         <h5>${detalles}</h5>
+         
          <h4>${habilidad1}</h4>
          <h4>${habilidad2}</h4>
          </div>
@@ -106,7 +106,7 @@ const pintarPokemon =(detalles,types,habilidad2,habilidad1,descripcionEspañol,n
          <progress id="${hpNumero}" max="100" value="${hpNumero}">${hpNumero}</progress>
          <label for="${ataqueNumero}">ATTACK</label>
          <progress id="${ataqueNumero}" max="100" value="${ataqueNumero}">${ataqueNumero}</progress>
-         <label for="${defenseNumero}">DEFENSE</label>
+        label for="${defenseNumero}">DEFENSE</label>
          <progress id="${defenseNumero}" max="100" value="${defenseNumero}">${defenseNumero}</progress>
          <label for="${ataqueSpecialNumero}">SPECIAL ATTACK</label>
          <progress id="${ataqueSpecialNumero}" max="100" value="${ataqueSpecialNumero}">${ataqueSpecialNumero}</progress>
@@ -129,20 +129,23 @@ function descripcionPokemon(flavortextentries){
         'No hay una descripción en español para este Pokémon'
     }
 
-function detalle(habilidad){
+/*function detalle(habilidad){
     let arrayhabilidades =[]
-    for (let i =0; i < habilidad;i++){
-        const urlHabilidad =abilities.ability.url
+    habilidad.forEach(ability=>{
+        const urlHabilidad =ability.ability.url
         console.log(urlHabilidad)
         const response = fetch(`${urlHabilidad}`)
         const fetchHabilidad = response.json()
+        console.log(fetchHabilidad)
  const abilityDetails ={
     nombre:fetchHabilidad.name.find(name=>name.language.name ==='es').name,
     descripcion:fetchHabilidad.effect_entries.find(entry=>entry.language.name ==='es').effect
  }
  arrayhabilidades.push(abilityDetails)
-    } return arrayhabilidades
-    }                                    
+}) 
+    } 
+    */
+                                     
 
 nextBtn.addEventListener('click', () => {
     visible.innerHTML = '';
