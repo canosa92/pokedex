@@ -86,13 +86,14 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
 const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero) =>{      
      
         let infopokemon= `
-         <div class="contenedorPokemon ${type}">
+         <div class="contenedorPokemon">
+         <div class="div${type}"
          <div class="pokemon-imagen">
          <img src="${img}"/>
          </div>
          <div class="pokemon-info">
          <h4>${id}.${name}</h4>
-         <h3 class="tipo${type}">${types}</h3>
+         <h3 class="tipo ${types}">${types}</h3>
          <div class="habilidades">
          <h4>${habilidad1}</h4>
          <h4>${habilidad2}</h4>
