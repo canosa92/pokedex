@@ -84,7 +84,7 @@ const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,i
      
         let infopokemon= `
          <div class="contenedorPokemon">
-         <div class="div${type}"
+         <div class="div${type}">
          <div class="pokemon-imagen">
          <img src="${img}"/>
          </div>
@@ -115,6 +115,7 @@ const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,i
          <progress id="${spreedNumero}" max="100" value="${spreedNumero}">${spreedNumero}</progress>
          </div>
          </article>
+             </div>
              </div>
              </div>`
              visible.innerHTML += infopokemon
