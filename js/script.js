@@ -200,6 +200,7 @@ selector.addEventListener('click',()=>{
 
             // Agregar evento de clic
             listItem.addEventListener('click',() => {
+                visible.innerHTML = ''
     
                 pokemonNumero(nombre)
             });
