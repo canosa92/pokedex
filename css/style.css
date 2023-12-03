@@ -141,7 +141,7 @@ segun el tipo de pokemon*/
 .divwater{
   position: relative;
   background-color: rgba(2, 204, 255, 0.301);
-  background-image: url(/assets/img/water.png);
+  background-image: url('https://live.staticflickr.com/65535/52470810348_38bdeaa93b_o.jpg');
   background-blend-mode: saturation;
   overflow: hidden;
 }
