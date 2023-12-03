@@ -2,10 +2,19 @@
 const input = document.getElementById('searchInput');
 const buscadorSearch = document.getElementById ('searchBtn')
 const prevBtn = document.getElementById('prevBtn');
+const nombres = document.getElementById('nombres')
+
 const nextBtn = document.getElementById('nextBtn');
 const visible = document.getElementById('app');
 const selector = document.getElementById('selector');
-const azar = document.getElementById('azarBtn')
+const azar = document.getElementById('azarBtn');
+
+
+
+
+
+
+
 let limite=30;
 //creamos las variables para hacer la paginacion
 let paginaIncial =`https://pokeapi.co/api/v2/pokemon?limit=${limite}&offset=0`
@@ -185,14 +194,14 @@ selector.addEventListener('click',()=>{
 
 //llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
  ObtenerPokemons(paginaIncial);
-const ObtenerNombres = async(pagina) =>{
-    try{
-        const response = await fetch (pagina);
+
+    fetch('https://pokeapi.co/api/v2/')
         if(!response.ok){
             throw new Error( 'ha surgido un error', response.status)
         }
         const data = await response.json();
         let nombresTodos =data.results.name
+nombres.innerText = nombresTodos
     }    
     catch (error){
         console.log('error', error)
