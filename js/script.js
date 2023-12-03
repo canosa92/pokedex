@@ -162,8 +162,8 @@ prevBtn.addEventListener('click', () => {
 //Creamos un buscador para traer la informacion de un pokemon que querramos obtener
 
 buscadorSearch.addEventListener('click',()=>{
+    visible.innerHTML=''
 let search = input.value.toLocaleLowerCase();
-visible.innerHTML=''
 pokemonNumero(search)
 })
   //  
