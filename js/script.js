@@ -111,7 +111,7 @@ let infopokemon=`
              </div>
                       </div>`
              visible.innerHTML += infopokemon
-     }
+     
  } catch(error){
     console.log('error', error)
    }
