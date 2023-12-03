@@ -58,7 +58,7 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
 //const detalles= detalle(habilidad)
 
         let name = pokemon.name.toUpperCase();
-        let img = pokemon.sprites.other["official-artwork"].front_default;
+        let img = pokemon.sprites.other["official-artwork"].front_shiny;
         let id = pokemon.id
         let habilidad1 =pokemon.abilities[0].ability.name
         let habilidad2 =pokemon.abilities[1].ability.name
@@ -190,7 +190,7 @@ selector.addEventListener('click',()=>{
 
     const nombresPoke = document.getElementById('nombres')
 
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=1292&offset=0')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=1017&offset=0')
     .then(response =>response.json())
     .then(data=>{
             const nombresPokemon = data.results.map(pokemon => pokemon.name);
