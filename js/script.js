@@ -75,14 +75,16 @@ pokemon.sort((a,b)=> a.id -b.id)
 let infopokemon=`
 
          <div class="contenedorPokemon div${type}">
+         <div class="id">
+         <h4>${id}</h4>
+         </div>
          <div class="pokemon-imagen">
          <img src="${img}"/>
          </div>
          <div class="pokemon-info">
-         <h4>${id}.${name}</h4>
+         <h4>${name}</h4>
          <h3 class="tipo ${types}">${types}</h3>
          <div class="habilidades">
-         
          <h4>${habilidad1}</h4>
          <h4>${habilidad2}</h4>
          </div>
