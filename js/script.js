@@ -75,7 +75,7 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
         let spreedNumero =pokemon.stats[5].base_stat 
 let infopokemon=`
 
-         <div class="contenedorPokemon div${type}>
+         <div class="contenedorPokemon div${type}">
          <div class="pokemon-imagen">
          <img src="${img}"/>
          </div>
