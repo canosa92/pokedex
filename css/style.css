@@ -184,3 +184,11 @@ background-size: cover;
 	background-size: cover;
 }
 
+ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+li{
+  padding: 2px;
+  list-style: none;
+}

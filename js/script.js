@@ -187,19 +187,24 @@ selector.addEventListener('click',()=>{
 //llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
  ObtenerPokemons(paginaIncial);
 
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=1262&offset=0')
-.then(response =>response.json())
-.then(data=>{
-        let nombresTodos =data.results
-    let arrayNombres=[]
-    for (let i=0;i<nombresTodos;i++){
-        let nombresid=nombresTodos[i].name
-        let htmlNombres =`<div class="divNombre">nombresid</class>`
-        arrayNombres.push(htmlNombres)
-    }
-        
-nombres.innerText = arrayNombres
-    })
-    .catch (error =>
-        console.error('hay un error',error)
-    )
+
+    const nombresPoke = document.getElementById('nombres')
+
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=1292&offset=0')
+    .then(response =>response.json())
+    .then(data=>{
+            const nombresPokemon = data.results.map(pokemon => pokemon.name);
+          nombresPokemon.forEach(nombre => {
+            const listItem = document.createElement('li');
+            listItem.textContent = nombre;
+
+            // Agregar evento de clic
+            listItem.addEventListener('click',() => {
+    
+                pokemonNumero(nombre)
+            });
+            nombres.appendChild(listItem)
+            })
+        })
+        .catch(error => console.error('Error al obtener la'));
+      
