@@ -187,11 +187,18 @@ selector.addEventListener('click',()=>{
 //llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
  ObtenerPokemons(paginaIncial);
 
-    fetch('https://pokeapi.co/api/v2/')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=1262&offset=0')
 .then(response =>response.json())
 .then(data=>{
-        let nombresTodos =data.results.name
-nombres.innerText = nombresTodos
+        let nombresTodos =data.results
+    let arrayNombres=[]
+    for (let i=0;i<nombresTodos;i++){
+        let nombresid=nombresTodos[i].name
+        let htmlNombres =`<div class="divNombre">nombresid</class>`
+        arrayNombres.push(htmlNombres)
+    }
+        
+nombres.innerText = arrayNombres
     })
     .catch (error =>
         console.error('hay un error',error)
