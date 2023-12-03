@@ -72,21 +72,10 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
         let defenseNumero =pokemon.stats[2].base_stat
         let ataqueSpecialNumero =pokemon.stats[3].base_stat
         let defensaSpecialNumero =pokemon.stats[4].base_stat
-        let spreedNumero =pokemon.stats[5].base_stat
+        let spreedNumero =pokemon.stats[5].base_stat 
+let infopokemon=`
 
-        pintarPokemon(types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero)
-   
- } catch(error){
-    console.log('error', error)
-   }
-   }
-
-const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,id,type,hpNumero,defenseNumero,ataqueNumero,ataqueSpecialNumero,defensaSpecialNumero,spreedNumero) =>{      
-     
-        let infopokemon= `
-         <div class="contenedorPokemon div${type}">
-         <div class="intro">
-         <div class="overlay">
+         <div class="contenedorPokemon div${type}>
          <div class="pokemon-imagen">
          <img src="${img}"/>
          </div>
@@ -118,13 +107,19 @@ const pintarPokemon =(types,habilidad2,habilidad1,descripcionEspañol,name,img,i
          <progress id="${spreedNumero}" max="100" value="${spreedNumero}">${spreedNumero}</progress>
          </div>
          </article>
-             </div>
-             </div>
+             
              </div>
                       </div>`
              visible.innerHTML += infopokemon
      }
-    // }
+ } catch(error){
+    console.log('error', error)
+   }
+   }
+  
+     
+    
+    // 
 function descripcionPokemon(flavortextentries){
    
     const descripcionEspañol = flavortextentries.find(entry =>
