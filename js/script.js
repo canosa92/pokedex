@@ -24,8 +24,7 @@ const ObtenerPokemons = async(pagina) =>{
         nextpage = data.next;
         prevpage = data.previous
 
-        let todos = data.results;
-        todos.sort((a,b)=>a.numeroPokedex - b.numeroPokedex)
+        let todos =data.results
       
         todos.forEach(todos => {
             pokemonNumero(todos.name)
@@ -53,7 +52,7 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
         const pokemon = await response.json()
         const habilidad=fetchDescripcion.abilities
-
+pokemon.sort((a,b)=> a.id -b.id)
 
 //const detalles= detalle(habilidad)
 
