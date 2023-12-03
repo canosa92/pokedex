@@ -52,11 +52,8 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
         const pokemon = await response.json()
         const habilidad=fetchDescripcion.abilities
-pokemon.sort((a,b)=> a.id -b.id)
 
 //const detalles= detalle(habilidad)
-
-
 
         let name = pokemon.name.toUpperCase();
         let img = pokemon.sprites.other["official-artwork"].front_default;
@@ -188,3 +185,15 @@ selector.addEventListener('click',()=>{
 
 //llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
  ObtenerPokemons(paginaIncial);
+const ObtenerNombres = async(pagina) =>{
+    try{
+        const response = await fetch (pagina);
+        if(!response.ok){
+            throw new Error( 'ha surgido un error', response.status)
+        }
+        const data = await response.json();
+        let nombresTodos =data.results.name
+    }    
+    catch (error){
+        console.log('error', error)
+    }
