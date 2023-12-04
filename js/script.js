@@ -64,6 +64,7 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
         let defensaSpecialNumero =pokemon.stats[4].base_stat
         let spreedNumero =pokemon.stats[5].base_stat 
          // <p>${descripcionEspañol}</p>  
+            let lista=document.createElement('li')
        
     let infopokemon=`
          <div class="contenedorPokemon div${type}">
@@ -101,7 +102,9 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
                  </article>
              </div>
         </div>`
-             visible.innerHTML += infopokemon   
+             lista.innerHTML = infopokemon   
+            divide.appendChild(lista)
+            
  })
     })
 }
