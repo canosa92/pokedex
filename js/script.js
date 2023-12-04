@@ -43,19 +43,15 @@ const pokemonNumero=(nombrePokemon)=>{
 //con el nombre de los pokemons hacemos una peticion para que nos devuelva las descripciones   y la entrada    
 fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
     .then(response =>response.json())
-    .then(pokemon=>
+    .then(pokemon=>{
     
 pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
         .then(response =>response.json())
-        .then (pokemonDescripcion =>
+        .then (pokemonDescripcion =>{
             
-
 //const descripcionEspañol = descripcionPokemon(flavortextentries)
 //para conseguir otros valores que nos interesan
-
-        
-        //const habilidad=fetchDescripcion.abilities
-
+//const habilidad=fetchDescripcion.abilities
 //const detalles= detalle(habilidad)
 
         let name = pokemon.name.toUpperCase();
@@ -64,7 +60,7 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
         let habilidad1 =pokemon.abilities[0].ability.name
         let type= pokemon.types[0].type.name
         let types = pokemon.types.map(type =>type.type.name)
-        types =types.join('   ')
+            types =types.join('   ')
         let hpNumero = pokemon.stats[0].base_stat;
         let ataqueNumero =pokemon.stats[1].base_stat;
         let defenseNumero =pokemon.stats[2].base_stat
@@ -72,40 +68,40 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
         let defensaSpecialNumero =pokemon.stats[4].base_stat
         let spreedNumero =pokemon.stats[5].base_stat 
     
-let infopokemon=`
+    let infopokemon=`
          <div class="contenedorPokemon div${type}">
-         <div class="id">
-         <h4>${id}</h4>
-         </div>
-         <div class="pokemon-imagen">
-         <img src="${img}"/>
-         </div>
-         <div class="pokemon-info">
-         <h4>${name}</h4>
-         <h3 class="tipo ${types}">${types}</h3>
-         <div class="habilidades">
-         <h4>${habilidad1}</h4>
-         </div>
-         <div class="oculto">
-         <article>
-         <div class="descripcion">
-         <p>${descripcionEspañol}</p>
-         </div>
-         <div class="estadisticas">
-         <label for="${hpNumero}">HP</label>
-         <progress id="${hpNumero}" max="100" value="${hpNumero}">${hpNumero}</progress>
-         <label for="${ataqueNumero}">ATTACK</label>
-         <progress id="${ataqueNumero}" max="100" value="${ataqueNumero}">${ataqueNumero}</progress>
-        <label for="${defenseNumero}">DEFENSE</label>
-         <progress id="${defenseNumero}" max="100" value="${defenseNumero}">${defenseNumero}</progress>
-         <label for="${ataqueSpecialNumero}">SPECIAL ATTACK</label>
-         <progress id="${ataqueSpecialNumero}" max="100" value="${ataqueSpecialNumero}">${ataqueSpecialNumero}</progress>
-         <label for="${defensaSpecialNumero}">SPECIAL DEFENSE</label>
-         <progress id="${defensaSpecialNumero}" max="100" value="${defensaSpecialNumero}">${defensaSpecialNumero}</progress>
-         <label for="${spreedNumero}">SPREED</label>
-         <progress id="${spreedNumero}" max="100" value="${spreedNumero}">${spreedNumero}</progress>
-         </div>
-         </article>
+             <div class="id">
+                 <h4>${id}</h4>
+             </div>
+             <div class="pokemon-imagen">
+                 <img src="${img}"/>
+             </div>
+            <div class="pokemon-info">
+                 <h4>${name}</h4>
+                 <h3 class="tipo ${types}">${types}</h3>
+                 <div class="habilidades">
+                     <h4>${habilidad1}</h4>
+                 </div>
+                 <div class="oculto">
+                     <article>
+                         <div class="descripcion">
+                             <p>${descripcionEspañol}</p>
+                         </div>
+                         <div class="estadisticas">
+                             <label for="${hpNumero}">HP</label>
+                             <progress id="${hpNumero}" max="100" value="${hpNumero}">${hpNumero}</progress>
+                             <label for="${ataqueNumero}">ATTACK</label>
+                            <progress id="${ataqueNumero}" max="100" value="${ataqueNumero}">${ataqueNumero}</progress>
+                            <label for="${defenseNumero}">DEFENSE</label>
+                             <progress id="${defenseNumero}" max="100" value="${defenseNumero}">${defenseNumero}</progress>
+                             <label for="${ataqueSpecialNumero}">SPECIAL ATTACK</label>
+                             <progress id="${ataqueSpecialNumero}" max="100" value="${ataqueSpecialNumero}">${ataqueSpecialNumero}</progress>
+                             <label for="${defensaSpecialNumero}">SPECIAL DEFENSE</label>
+                             <progress id="${defensaSpecialNumero}" max="100" value="${defensaSpecialNumero}">${defensaSpecialNumero}</progress>
+                             <label for="${spreedNumero}">SPREED</label>
+                             <progress id="${spreedNumero}" max="100" value="${spreedNumero}">${spreedNumero}</progress>
+                     </div>
+                 </article>
              </div>
         </div>`
              visible.innerHTML += infopokemon   
