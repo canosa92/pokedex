@@ -41,16 +41,19 @@ const ObtenerPokemons = async(pagina) =>{
 const pokemonNumero=(nombrePokemon)=>{
 //creamos un bucle con la cantidad de pokemon que nos devuelve la primera peticion
 //con el nombre de los pokemons hacemos una peticion para que nos devuelva las descripciones   y la entrada    
-const pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
-const fetchDescripcion = pokemonDescripcion.json()
+fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
+    .then(response =>response.json())
+    .then(pokemon=>
+    
+pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
+        .then(response =>response.json())
+        .then (pokemonDescripcion =>
+            
 const flavortextentries =fetchDescripcion.flavor_text_entries
-
-
 const descripcionEspañol = descripcionPokemon(flavortextentries)
 //para conseguir otros valores que nos interesan
 
-        const response = fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
-        const pokemon = response.json()
+        
         const habilidad=fetchDescripcion.abilities
 
 //const detalles= detalle(habilidad)
@@ -108,6 +111,8 @@ let infopokemon=`
              visible.innerHTML += infopokemon
      
  }     
+}
+}
     
     // 
 function descripcionPokemon(flavortextentries){
