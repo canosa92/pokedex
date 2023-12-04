@@ -22,17 +22,18 @@ const ObtenerPokemons =(pagina) =>{
     .then(data =>{
         nextpage = data.next;
         prevpage = data.previous
-    pokemonNumero(data)
+        let todos =data.results
+    
+    todos.forEach(todos => {
+      let nombrePokemon=todos.name
+    pokemonNumero(nombrePokemon)
         
     })
 }
 
 //hacemos otra peticion fetch para traernos los datos que nos interesa de los pokemons y los ponemos en el HTML
-const pokemonNumero=(data)=>{
-    let todos =data.results
+const pokemonNumero=(nombrePokemon)=>{
     
-    todos.forEach(todos => {
-      let nombrePokemon=todos.name
     
 //creamos un bucle con la cantidad de pokemon que nos devuelve la primera peticion
 //con el nombre de los pokemons hacemos una peticion para que nos devuelva las descripciones   y la entrada    
@@ -101,7 +102,6 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
         </div>`
              visible.innerHTML += infopokemon   
  })
-        })
     })
 }
     // 
