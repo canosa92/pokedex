@@ -27,11 +27,7 @@ Aquí hay algunas sugerencias y mejoras para tu código:
    En tu código actual, realizas dos solicitudes por cada Pokémon: una para obtener detalles generales y otra para obtener detalles específicos de la especie. Puedes manejar ambas solicitudes de manera más eficiente utilizando Promise.all.
 
 3. **Corrección de la Asignación de `infopokemon` a `lista.innerHTML`:**
-   En lugar de asignar `infopokemon` directamente a `lista.innerHTML`, puedes crear un elemento contenedor (`div` en este caso) y establecer su contenido HTML. Esto ayuda a evitar problemas con la representación de cadenas HTML en el DOM.
-
-Aquí tienes una versión modificada de tu código:
-
-```javascript
+   En 
 const ObtenerPokemons = async (pagina) => {
     try {
         const response = await fetch(pagina);
