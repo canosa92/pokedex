@@ -54,7 +54,7 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
 //para conseguir otros valores que nos interesan
 
         
-        const habilidad=fetchDescripcion.abilities
+        //const habilidad=fetchDescripcion.abilities
 
 //const detalles= detalle(habilidad)
 
@@ -71,8 +71,8 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
         let ataqueSpecialNumero =pokemon.stats[3].base_stat
         let defensaSpecialNumero =pokemon.stats[4].base_stat
         let spreedNumero =pokemon.stats[5].base_stat 
+    
 let infopokemon=`
-
          <div class="contenedorPokemon div${type}">
          <div class="id">
          <h4>${id}</h4>
@@ -108,12 +108,8 @@ let infopokemon=`
          </article>
              </div>
         </div>`
-             visible.innerHTML += infopokemon
-     
- }     
-}
-}
-    
+             visible.innerHTML += infopokemon   
+ }}}
     // 
 function descripcionPokemon(flavortextentries){
    
@@ -140,28 +136,21 @@ function descripcionPokemon(flavortextentries){
     } 
     */
                                      
-
 nextBtn.addEventListener('click', () => {
     visible.innerHTML = '';
     ObtenerPokemons(nextpage)
 })    
-
 //boton previus
 prevBtn.addEventListener('click', () => {
     visible.innerHTML = '';
     ObtenerPokemons(prevpage)
-
 })    
-
 //Creamos un buscador para traer la informacion de un pokemon que querramos obtener
-
 buscadorSearch.addEventListener('click',()=>{
     visible.innerHTML=''
 let search = input.value.toLocaleLowerCase();
 pokemonNumero(search)
 })
-  //  
-
 //para seleccionar cuantos pokemons queremos ver en cada pagina
 selector.addEventListener('click',()=>{
     limite = selector.value;
@@ -170,7 +159,7 @@ selector.addEventListener('click',()=>{
      visible.innerHTML =''
      ObtenerPokemons(paginaIncial);
  })
-
+//Creamos un boton para que nos de pokemons al azar
  azar.addEventListener('click',()=>{
      visible.innerHTML=''
      for (let i =0; i <limite;i++){
@@ -179,13 +168,9 @@ selector.addEventListener('click',()=>{
     pokemonNumero(random)
      }
  })
-
-//llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
- ObtenerPokemons(paginaIncial);
-
-
+/*creamos una lista con los distintos nombres de los pokemon, y hacemos un evento para que cuando le den click a los nombres se obtenga
+la infomacion de los pokemons*/
     const nombresPoke = document.getElementById('nombres')
-
     fetch('https://pokeapi.co/api/v2/pokemon?limit=1292&offset=0')
     .then(response =>response.json())
     .then(data=>{
@@ -203,5 +188,7 @@ selector.addEventListener('click',()=>{
             nombres.appendChild(listItem)
             })
         })
-        .catch(error => console.error('Error al obtener la'));
+        .catch(error => console.error('Error al obtener los nombres de los pokemon'));
       
+//llamamos a la funcion de obtenerPokemons para cargarla y que nos aparezaca pokemons al cargar
+ ObtenerPokemons(paginaIncial);
