@@ -32,7 +32,7 @@ const ObtenerPokemons =(pagina) =>{
 }
 
 //hacemos otra peticion fetch para traernos los datos que nos interesa de los pokemons y los ponemos en el HTML
-const pokemonNumero=(nombrePokemon)=>{
+//const pokemonNumero=(nombrePokemon)=>{
     
     
 //creamos un bucle con la cantidad de pokemon que nos devuelve la primera peticion
