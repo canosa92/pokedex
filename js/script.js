@@ -103,7 +103,7 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
              </div>
         </div>`
              lista.innerHTML = infopokemon   
-            divide.appendChild(lista)
+            visible.appendChild(lista)
             
  })
     })
