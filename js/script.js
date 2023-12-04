@@ -25,8 +25,8 @@ const ObtenerPokemons =(pagina) =>{
         let todos =data.results
     
     todos.forEach(todos => {
-      let nombrePokemon=todos.name
-    pokemonNumero(nombrePokemon)
+      
+    pokemonNumero(todos.name)
     })
     })
 }
