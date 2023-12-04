@@ -38,21 +38,19 @@ const ObtenerPokemons = async(pagina) =>{
 }
 
 //hacemos otra peticion fetch para traernos los datos que nos interesa de los pokemons y los ponemos en el HTML
-const pokemonNumero=async(nombrePokemon)=>{
-    try{
+const pokemonNumero=(nombrePokemon)=>{
 //creamos un bucle con la cantidad de pokemon que nos devuelve la primera peticion
-  
 //con el nombre de los pokemons hacemos una peticion para que nos devuelva las descripciones   y la entrada    
-const pokemonDescripcion = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
-const fetchDescripcion = await pokemonDescripcion.json()
+const pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePokemon}`)
+const fetchDescripcion = pokemonDescripcion.json()
 const flavortextentries =fetchDescripcion.flavor_text_entries
 
 
 const descripcionEspañol = descripcionPokemon(flavortextentries)
 //para conseguir otros valores que nos interesan
 
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
-        const pokemon = await response.json()
+        const response = fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
+        const pokemon = response.json()
         const habilidad=fetchDescripcion.abilities
 
 //const detalles= detalle(habilidad)
@@ -111,12 +109,7 @@ let infopokemon=`
         </div>`
              visible.innerHTML += infopokemon
      
- } catch(error){
-    console.log('error', error)
-   }
-   }
-  
-     
+ }     
     
     // 
 function descripcionPokemon(flavortextentries){
