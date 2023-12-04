@@ -32,7 +32,7 @@ const ObtenerPokemons =(pagina) =>{
 }
 
 //hacemos otra peticion fetch para traernos los datos que nos interesa de los pokemons y los ponemos en el HTML
-//const pokemonNumero=(nombrePokemon)=>{
+const pokemonNumero=(nombrePokemon)=>{
     
     
 //creamos un bucle con la cantidad de pokemon que nos devuelve la primera peticion
@@ -45,7 +45,7 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
         .then(response =>response.json())
         .then (pokemonDescripcion =>{
             
-let descripcionEspañol = descripcionPokemon(flavortextentries)
+//let descripcionEspañol = descripcionPokemon(flavortextentries)
 //para conseguir otros valores que nos interesan
 //const habilidad=fetchDescripcion.abilities
 //const detalles= detalle(habilidad)
