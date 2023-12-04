@@ -176,6 +176,125 @@ background-size: cover;
 } 
 
 
+
+.divelectric{
+  position: relative;
+  background-color: rgba(207, 204, 28, 0.301);;
+  overflow: hidden;
+}
+
+.divelectric:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/electrico.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+.divfire{
+  position: relative;
+  background-color: rgba(238, 11, 11, 0.301);
+  overflow: hidden;
+}
+
+.divfire:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/fire.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+.divice{
+  position: relative;
+  background-color: rgba(26, 230, 213, 0.301);
+  overflow: hidden;
+}
+
+.divice:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/hielo.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+.didragon{
+  position: relative;
+  background-color: rgba(70, 26, 230, 0.301);
+  overflow: hidden;
+}
+
+.divdragon:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/dragon.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+.divlucha{
+  position: relative;
+  background-color: rgba(230, 142, 26, 0.301);
+  overflow: hidden;
+}
+
+.divice:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/lucha.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+.divghost{
+  position: relative;
+  background-color: rgba(104, 26, 230, 0.301);
+  overflow: hidden;
+}
+
+.divghost:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/ghost.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+
+
+
+
+
+
 ul{
   display: flex;
   flex-wrap: wrap;
