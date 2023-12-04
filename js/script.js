@@ -49,8 +49,8 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
         .then(response =>response.json())
         .then (pokemonDescripcion =>
             
-const flavortextentries =fetchDescripcion.flavor_text_entries
-const descripcionEspañol = descripcionPokemon(flavortextentries)
+
+//const descripcionEspañol = descripcionPokemon(flavortextentries)
 //para conseguir otros valores que nos interesan
 
         
