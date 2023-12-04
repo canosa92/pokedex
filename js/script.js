@@ -105,7 +105,9 @@ pokemonDescripcion = fetch(`https://pokeapi.co/api/v2/pokemon-species/${nombrePo
              </div>
         </div>`
              visible.innerHTML += infopokemon   
- }}}
+ })
+    })
+}
     // 
 function descripcionPokemon(flavortextentries){
    
