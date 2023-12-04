@@ -59,7 +59,6 @@ const descripcionEspañol = descripcionPokemon(flavortextentries)
         let img = pokemon.sprites.other["official-artwork"].front_shiny;
         let id = pokemon.id
         let habilidad1 =pokemon.abilities[0].ability.name
-        let habilidad2 =pokemon.abilities[1].ability.name
         let type= pokemon.types[0].type.name
         let types = pokemon.types.map(type =>type.type.name)
         types =types.join('   ')
@@ -83,7 +82,6 @@ let infopokemon=`
          <h3 class="tipo ${types}">${types}</h3>
          <div class="habilidades">
          <h4>${habilidad1}</h4>
-         <h4>${habilidad2}</h4>
          </div>
          <div class="oculto">
          <article>
@@ -183,7 +181,7 @@ selector.addEventListener('click',()=>{
 
     const nombresPoke = document.getElementById('nombres')
 
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=1017&offset=0')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=1292&offset=0')
     .then(response =>response.json())
     .then(data=>{
             const nombresPokemon = data.results.map(pokemon => pokemon.name);
