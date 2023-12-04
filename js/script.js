@@ -16,26 +16,17 @@ let prevpage;
 
 
 //creamos la funcion para hacer la paginacion y para traernos el array de los pokemons
-const ObtenerPokemons = async(pagina) =>{
-    try{
-        const response = await fetch (pagina);
-        if(!response.ok){
-            throw new Error( 'ha surgido un error', response.status)
-        }
-        const data = await response.json();
+const ObtenerPokemons =(pagina) =>{
+    fetch (pagina)
+    .then(response=>response.json())
+    .then(data =>{
         nextpage = data.next;
         prevpage = data.previous
-
         let todos =data.results
-      
         todos.forEach(todos => {
-            
             pokemonNumero(todos.name)
     })
-    }    
-    catch (error){
-        console.log('error', error)
-    }
+    })
 }
 
 //hacemos otra peticion fetch para traernos los datos que nos interesa de los pokemons y los ponemos en el HTML
