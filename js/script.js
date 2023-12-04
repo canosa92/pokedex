@@ -169,7 +169,7 @@ selector.addEventListener('click',()=>{
 /*creamos una lista con los distintos nombres de los pokemon, y hacemos un evento para que cuando le den click a los nombres se obtenga
 la infomacion de los pokemons*/
     const nombresPoke = document.getElementById('nombres')
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=1292&offset=0')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=1017&offset=0')
     .then(response =>response.json())
     .then(data=>{
             const nombresPokemon = data.results.map(pokemon => pokemon.name);
