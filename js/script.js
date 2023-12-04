@@ -95,7 +95,7 @@ const pokemonNumero = async (nombrePokemon) => {
         console.error('Error al obtener detalles del Pokémon:', error);
     }
 };
-```
+
 
 Este código utiliza `async/await` y `Promise.all` para mejorar la legibilidad y el manejo de Promesas. También utiliza un elemento contenedor (`div`) para evitar problemas con la asignación directa de HTML a `innerHTML`. Ajusta según sea necesario para tu aplicación.
 //creamos un bucle con la cantidad de pokemon que nos devuelve la primera peticion
