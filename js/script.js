@@ -29,9 +29,8 @@ const ObtenerPokemons = async(pagina) =>{
         let todos =data.results
       
         todos.forEach(todos => {
-            let todosNombres= todos.name
-            todosNombres.sort()
-            pokemonNumero(todosNombres)
+            
+            pokemonNumero(todos.name)
     })
     }    
     catch (error){
