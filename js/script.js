@@ -44,7 +44,6 @@ const pokemonNumero = async (nombrePokemon) => {
     ]);
     const arrayhabilidades=detalle(pokemon.abilities)
 
-   
 const descripcionEspañol=descripcionPokemon(descripcion.flavor_text_entries);
     // Obtener detalles del Pokemon y la descripción
     const name = pokemon.name.toUpperCase();
