@@ -22,7 +22,7 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .pagination {
@@ -65,24 +65,79 @@ header {
 #searchBtn:hover, #prevBtn:hover, #nextBtn:hover, #azarBtn:hover, #selector:hover {
   opacity: 0.8;
 }
+
+/*Vamos a dar estilo a la caja de pokemon que se pinta 
+desde el javascript*/
 .contenedorPokemon{
-  width: 200px;
+  width: 250px;
   height: auto;
-  padding: 1rem;
+  padding: 5px 10px;
   border: 2px solid rgb(116, 116, 116);
   border-radius: 5px;
-justify-content: center;
-align-items: center;
-overflow: hidden;
-
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.infoBasica{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap:10px;
+}
+.id{
+  padding: 10px;
+  width: 15px;
+  height: 20px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  background-color: #f2f2f27e;
 }
 
+.id:before{
+  content: ' ';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+  background-image: url(../assets/img/Pokemon-Pokeball.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  } 
+.nombre{
+  font-weight: bolder;
+  font-style: italic;
+
+}
 .pokemon-imagen {
-  padding-inline: 1rem;
   display: flex;
   justify-content: center;
 }
 
+.tipos_Altura, .peso_altura{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap:15px;
+ margin-top: -14px;
+ margin-bottom: -14px;
+  
+ }
+.tipo_texto, .medida{
+  text-transform: uppercase;
+  border: 1px black solid;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 2px 2px 2px 1px  grey;
+}
+.medida{
+  background-color: #f3eeee80;
+}
 .pokemon-imagen img {
   width: 100%;
   max-width: 6rem;
@@ -97,7 +152,7 @@ overflow: hidden;
 .oculto{
   display:grid;
   grid-template-rows:0fr;
-  transition: 0.3s grid-template-rows ease
+  transition: 0.3s grid-template-rows ease;
 }
 .contenedorPokemon:hover .oculto{
 grid-template-rows:1fr;
@@ -105,10 +160,24 @@ grid-template-rows:1fr;
 .oculto > article{
   overflow:hidden;
 }
+.habilidades{
+  display: flex;
+flex-direction: row;
+margin-top:-20px;
+margin-bottom: -20px;
+}
+.hab{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.hab p{
+  margin-top: -15px;
+}
 .estadisticas{
   width: 200px;
   display: flex;
-text-align: start;
+justify-content: center;
   flex-direction: column;
 align-items: center;
 }
@@ -132,8 +201,8 @@ segun el tipo de pokemon*/
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.3;
-  background-image: url(../assets/img/grass.png);
+  opacity: 0.7;
+  background-image: url(../assets/img/Icon_Planta.webp);
   background-repeat: no-repeat;
   background-size: cover;
 } 
@@ -151,7 +220,7 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/water.png);
+background-image: url(../assets/img/Icon_Agua.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
@@ -170,7 +239,7 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/poison.png);
+background-image: url(../assets/img/Icon_Veneno.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
@@ -191,7 +260,7 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/electrico.png);
+background-image: url(../assets/img/Icon_El%3Fctrico.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
@@ -209,7 +278,7 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/fire.png);
+background-image: url(../assets/img/Icon_Fuego.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
@@ -228,7 +297,7 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/hielo.png);
+background-image: url(../assets/img/Icon_Hielo.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
@@ -247,7 +316,7 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/dragon.png);
+background-image: url(../assets/img/Icon_Drag%3Fn.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
