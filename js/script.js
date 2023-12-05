@@ -25,7 +25,7 @@ const ObtenerPokemons = async (pagina) => {
     let todos = data.results;
 
     for (const pokemon of todos) {
-      await pokemonNumero(pokemon.name);
+     await pokemonNumero(pokemon.name);
     }
   } catch (error) {
     console.error('Error al obtener la lista de Pokémon:', error);
@@ -42,12 +42,16 @@ const pokemonNumero = async (nombrePokemon) => {
         (response) => response.json()
       ),
     ]);
+    const arrayhabilidades=detalle(pokemon.abilities)
 
+   
+const descripcionEspañol=descripcionPokemon(descripcion.flavor_text_entries);
     // Obtener detalles del Pokemon y la descripción
     const name = pokemon.name.toUpperCase();
     const img = pokemon.sprites.other['official-artwork'].front_shiny;
     const id = pokemon.id;
-    const habilidad1 = pokemon.abilities[0].ability.name;
+    //const habilidad1 = arrayhabilidades[1].name;
+ //<h4>${habilidad1}</h4>
     const type = pokemon.types[0].type.name;
     const types = pokemon.types.map((type) => type.type.name).join('   ');
     const hpNumero = pokemon.stats[0].base_stat;
@@ -56,6 +60,10 @@ const pokemonNumero = async (nombrePokemon) => {
     const ataqueSpecialNumero = pokemon.stats[3].base_stat;
     const defensaSpecialNumero = pokemon.stats[4].base_stat;
     const spreedNumero = pokemon.stats[5].base_stat;
+    const peso = `${pokemon.weight / 10} kg`;
+    const height= `${pokemon.height / 10} mts`;
+
+   
 
     // Crear un elemento contenedor y establecer su contenido HTML
     const contenedorPokemon = document.createElement('div');
@@ -70,8 +78,9 @@ const pokemonNumero = async (nombrePokemon) => {
    <div class="pokemon-info">
         <h4>${name}</h4>
         <h3 class="tipo ${types}">${types}</h3>
+        <h4> peso: ${peso} <br>altura: ${height}
         <div class="habilidades">
-            <h4>${habilidad1}</h4>
+           
         </div>
         <div class="oculto">
             <article>
@@ -81,15 +90,15 @@ const pokemonNumero = async (nombrePokemon) => {
                 <div class="estadisticas">
                     <label for="${hpNumero}">HP</label>
                     <progress id="${hpNumero}" max="100" value="${hpNumero}">${hpNumero}</progress>
-                    <label for="${ataqueNumero}">ATTACK</label>
+                    <label for="${ataqueNumero}">ATAQUE</label>
                    <progress id="${ataqueNumero}" max="100" value="${ataqueNumero}">${ataqueNumero}</progress>
-                   <label for="${defenseNumero}">DEFENSE</label>
+                   <label for="${defenseNumero}">DEFENSA</label>
                     <progress id="${defenseNumero}" max="100" value="${defenseNumero}">${defenseNumero}</progress>
-                    <label for="${ataqueSpecialNumero}">SPECIAL ATTACK</label>
+                    <label for="${ataqueSpecialNumero}">ATAQUE ESPECIAL</label>
                     <progress id="${ataqueSpecialNumero}" max="100" value="${ataqueSpecialNumero}">${ataqueSpecialNumero}</progress>
-                    <label for="${defensaSpecialNumero}">SPECIAL DEFENSE</label>
+                    <label for="${defensaSpecialNumero}">DEFENSA ESPECIAL</label>
                     <progress id="${defensaSpecialNumero}" max="100" value="${defensaSpecialNumero}">${defensaSpecialNumero}</progress>
-                    <label for="${spreedNumero}">SPREED</label>
+                    <label for="${spreedNumero}">VELOCIDAD</label>
                     <progress id="${spreedNumero}" max="100" value="${spreedNumero}">${spreedNumero}</progress>
             </div>
         </article>
@@ -114,21 +123,25 @@ function descripcionPokemon(flavortextentries) {
 
 function detalle(habilidad) {
   let arrayhabilidades = [];
+
   habilidad.forEach((ability) => {
     const urlHabilidad = ability.ability.url;
-    console.log(urlHabilidad);
-    const response = fetch(`${urlHabilidad}`);
-    const fetchHabilidad = response.json();
-    console.log(fetchHabilidad);
+
+    fetch(`${urlHabilidad}`)
+    .then((response) => response.json())
+    .then((fetchHabilidad) => {
+    
     const abilityDetails = {
-      nombre: fetchHabilidad.name.find((name) => name.language.name === 'es')
+      nombre: fetchHabilidad.names.find((name) => name.language.name === 'es')
         .name,
-      descripcion: fetchHabilidad.effect_entries.find(
+      descripcion: fetchHabilidad.flavor_text_entries.find(
         (entry) => entry.language.name === 'es'
-      ).effect,
+      ).flavor_text,
     };
     arrayhabilidades.push(abilityDetails);
   });
+})
+return arrayhabilidades
 }
 
 nextBtn.addEventListener('click', () => {

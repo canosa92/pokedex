@@ -233,7 +233,7 @@ background-repeat: no-repeat;
 background-size: cover;
 } 
 
-.didragon{
+.divdragon{
   position: relative;
   background-color: rgba(70, 26, 230, 0.301);
   overflow: hidden;
@@ -247,18 +247,18 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/lucha.png);
+background-image: url(../assets/img/dragon.png);
 background-repeat: no-repeat;
 background-size: cover;
 } 
 
-.divlucha{
+.divfighting{
   position: relative;
-  background-color: rgba(230, 142, 26, 0.301);
+  background-color: rgba(167, 117, 52, 0.301);
   overflow: hidden;
 }
 
-.divice:before{
+.divfighting:before{
 content: ' ';
 position: absolute;
 overflow: hidden;
@@ -288,10 +288,82 @@ background-image: url(../assets/img/ghost.png);
 background-repeat: no-repeat;
 background-size: cover;
 } 
+.divdark{
+  position: relative;
+  background-color: rgba(14, 9, 22, 0.301);
+  overflow: hidden;
+}
 
+.divghost:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/ghost.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+} 
 
+.divrock{
+  position: relative;
+  background-color: rgba(230, 125, 26, 0.301);
+  overflow: hidden;
+}
 
+.divrock:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/roca.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+} 
 
+.divbug{
+  position: relative;
+  background-color: rgba(26, 230, 43, 0.301);
+  overflow: hidden;
+}
+
+.divbug:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/bicho.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+.divpsychic{
+  position: relative;
+  background-color: rgba(26, 230, 43, 0.301);
+  overflow: hidden;
+}
+
+.divpsychic:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/psyco.png);
+background-repeat: no-repeat;
+background-size: cover;
+} 
 
 
 
