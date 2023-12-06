@@ -78,6 +78,10 @@ desde el javascript*/
   align-items: center;
   overflow: hidden;
 }
+.contenedorPokemon:hover{
+  box-shadow: 10px 0 10px rgba(0,0,0,.7);
+  width: 300px;
+}
 .infoBasica{
   display: flex;
   flex-direction: row;
@@ -126,7 +130,6 @@ desde el javascript*/
   gap:15px;
  margin-top: -14px;
  margin-bottom: -14px;
-  
  }
 .tipo_texto, .medida{
   text-transform: uppercase;
@@ -136,11 +139,12 @@ desde el javascript*/
   box-shadow: 2px 2px 2px 1px  grey;
 }
 .medida{
-  background-color: #f3eeee80;
+  background-color: rgba(252, 252, 252, 0.651);
 }
 .pokemon-imagen img {
   width: 100%;
   max-width: 6rem;
+  margin-top: -15px;
 }
 
 .pokemon-info {
@@ -149,10 +153,15 @@ desde el javascript*/
   align-items: center;
   text-align: center;
 }
+.descripcion{
+  font-size: 17px;
+}
 .oculto{
   display:grid;
   grid-template-rows:0fr;
   transition: 0.3s grid-template-rows ease;
+  margin-top: -19px;
+
 }
 .contenedorPokemon:hover .oculto{
 grid-template-rows:1fr;
@@ -162,20 +171,26 @@ grid-template-rows:1fr;
 }
 .habilidades{
   display: flex;
-flex-direction: row;
-margin-top:-20px;
-margin-bottom: -20px;
+  flex-direction: column;
+  justify-content: start;
+  margin-bottom: -20px;
 }
 .hab{
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  gap:10px;
+  align-items: start;
+  margin-top: -10px;
+}
+.hab h4{
+  margin-top: -2px; 
 }
 .hab p{
-  margin-top: -15px;
+  margin-top: -20px;
+  text-align: start;
 }
 .estadisticas{
-  width: 200px;
+  margin-top: -15px;
   display: flex;
 justify-content: center;
   flex-direction: column;

@@ -89,10 +89,11 @@ const pokemonNumero = async (nombrePokemon) => {
                 </div>
         <div class="oculto">
             <article>
+            <h3>Habilidades</h3>
                 <div class="habilidades">
-                <h4>Habilidades</h4>
                  ${habilidades}
                  </div>
+                 <h3>Estadisticas</h3>
                 <div class="estadisticas">
                     ${estadisticas}
             </div>
