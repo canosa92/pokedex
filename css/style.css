@@ -1,5 +1,5 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   background-color: #f2f2f2;
   margin: 0;
 }
@@ -141,6 +141,11 @@ desde el javascript*/
 .tipo_texto{
   color:white
 }
+
+.descripcion p{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 /*vamos a darle color a los fondos de lot ipos de pokemon */
 .bug{
   background-color: #A8B820;
@@ -221,7 +226,7 @@ desde el javascript*/
   display:grid;
   grid-template-rows:0fr;
   transition: 0.3s grid-template-rows ease;
-  margin-top: -19px;
+  margin-top: 5px;
 
 }
 .contenedorPokemon:hover .oculto{
@@ -265,69 +270,81 @@ align-items: center;
 
 /*damos estilo a los distintos contenedores
 segun el tipo de pokemon*/
-.divgrass{
-    position: relative;
-    background-color: rgba(33, 250, 40, 0.301);
-    overflow: hidden;
-}
-
-.divgrass:before{
-  content: ' ';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.7;
-  background-image: url(../assets/img/Icon_Planta.webp);
-  background-repeat: no-repeat;
-  background-size: cover;
-} 
-
-.divwater{
+.divbug{
   position: relative;
-  background-color: rgba(2, 204, 255, 0.301);
+  background-color: 	rgba(169, 184, 32, 0.658);
   overflow: hidden;
 }
-
-.divwater:before{
-content: ' ';
-position: absolute;
-width: 100%;
-height: 100%;
-z-index: -1;
-opacity: 0.3;
-background-image: url(../assets/img/Icon_Agua.webp);
-background-repeat: no-repeat;
-background-size: cover;
-} 
-
-.divpoison{
-  position: relative;
-  background-color: rgba(170, 33, 250, 0.301);;
-  overflow: hidden;
-}
-
-.divpoison:before{
+.divbug:before{
 content: ' ';
 position: absolute;
 overflow: hidden;
 width: 100%;
 height: 100%;
 z-index: -1;
-opacity: 0.3;
-background-image: url(../assets/img/Icon_Veneno.webp);
+opacity: 0.4;
+background-image: url(../assets/img/Icon_bicho.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
 
+.divwater{
+  position: relative;
+  background-color: 	rgba(56, 152, 248, 0.300);
+  overflow: hidden;
+}
+.divwater:before{
+content: ' ';
+position: absolute;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.4;
+background-image: url(../assets/img/Icon_Agua.webp);
+background-repeat: no-repeat;
+background-size: cover;
+} 
 
+.divsteel{
+  position: relative;
+  background-color: 	rgba(168, 168, 192, 0.300);
+  overflow: hidden;
+}
+.divsteel:before{
+content: ' ';
+position: absolute;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.4;
+background-image: url(../assets/img/Icon_Acero.webp);
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.divdragon{
+  position: relative;
+  background-color: rgba(160, 80, 56, 0.300);
+  overflow: hidden;
+}
+.divdragon:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.4;
+background-image: url(../assets/img/dragon.webp);
+background-repeat: no-repeat;
+background-size: cover;
+} 
 
 .divelectric{
   position: relative;
-  background-color: rgba(207, 204, 28, 0.301);;
+  background-color: rgba(248, 208, 48, 0.300);;
   overflow: hidden;
 }
-
 .divelectric:before{
 content: ' ';
 position: absolute;
@@ -335,17 +352,35 @@ overflow: hidden;
 width: 100%;
 height: 100%;
 z-index: -1;
+opacity: 0.4;
+background-image: url(../assets/img/electrico.webp);
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.divghost{
+  position: relative;
+  background-color: rgba(96, 96, 176, 0.30);
+  overflow: hidden;
+}
+.divghost:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/Icon_El%3Fctrico.webp);
+background-image: url(../assets/img/Icon_Fantasma.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
+
 .divfire{
   position: relative;
-  background-color: rgba(238, 11, 11, 0.301);
+  background-color: rgba(240, 80, 48, 0.30);
   overflow: hidden;
 }
-
 .divfire:before{
 content: ' ';
 position: absolute;
@@ -357,14 +392,31 @@ opacity: 0.3;
 background-image: url(../assets/img/Icon_Fuego.webp);
 background-repeat: no-repeat;
 background-size: cover;
-} 
+}
+
+.divfairy{
+  position: relative;
+  background-color: rgb(231,159,231,0.3);
+  overflow: hidden;
+}
+.divfairy:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/Icon_Hada.webp);
+background-repeat: no-repeat;
+background-size: cover;
+}
 
 .divice{
   position: relative;
-  background-color: rgba(26, 230, 213, 0.301);
+  background-color:rgba(88, 199, 224, 0.30);
   overflow: hidden;
 }
-
 .divice:before{
 content: ' ';
 position: absolute;
@@ -378,31 +430,11 @@ background-repeat: no-repeat;
 background-size: cover;
 } 
 
-.divdragon{
-  position: relative;
-  background-color: rgba(70, 26, 230, 0.301);
-  overflow: hidden;
-}
-
-.divdragon:before{
-content: ' ';
-position: absolute;
-overflow: hidden;
-width: 100%;
-height: 100%;
-z-index: -1;
-opacity: 0.3;
-background-image: url(../assets/img/Icon_Drag%3Fn.webp);
-background-repeat: no-repeat;
-background-size: cover;
-} 
-
 .divfighting{
   position: relative;
-  background-color: rgba(167, 117, 52, 0.301);
+  background-color: rgba(160, 80, 56, 0.30);
   overflow: hidden;
 }
-
 .divfighting:before{
 content: ' ';
 position: absolute;
@@ -411,17 +443,17 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/lucha.png);
+background-image: url(../assets/img/Icon_Lucha.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
-.divghost{
+
+.divnormal{
   position: relative;
-  background-color: rgba(104, 26, 230, 0.301);
+  background-color: 	rgba(168, 160, 144, 0.30);
   overflow: hidden;
 }
-
-.divghost:before{
+.divnormal:before{
 content: ' ';
 position: absolute;
 overflow: hidden;
@@ -429,74 +461,33 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/ghost.png);
+background-image: url(../assets/img/Icon_Normal.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
-.divdark{
-  position: relative;
-  background-color: rgba(14, 9, 22, 0.301);
-  overflow: hidden;
+
+.divgrass{
+    position: relative;
+    background-color: 	rgba(120, 200, 80, 0.30);
+    overflow: hidden;
+}
+.divgrass:before{
+  content: ' ';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.7;
+  background-image: url(../assets/img/Icon_Planta.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.divghost:before{
-content: ' ';
-position: absolute;
-overflow: hidden;
-width: 100%;
-height: 100%;
-z-index: -1;
-opacity: 0.3;
-background-image: url(../assets/img/ghost.png);
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-} 
-
-.divrock{
-  position: relative;
-  background-color: rgba(230, 125, 26, 0.301);
-  overflow: hidden;
-}
-
-.divrock:before{
-content: ' ';
-position: absolute;
-overflow: hidden;
-width: 100%;
-height: 100%;
-z-index: -1;
-opacity: 0.3;
-background-image: url(../assets/img/roca.png);
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-} 
-
-.divbug{
-  position: relative;
-  background-color: rgba(26, 230, 43, 0.301);
-  overflow: hidden;
-}
-
-.divbug:before{
-content: ' ';
-position: absolute;
-overflow: hidden;
-width: 100%;
-height: 100%;
-z-index: -1;
-opacity: 0.3;
-background-image: url(../assets/img/bicho.png);
-background-repeat: no-repeat;
-background-size: cover;
-} 
 .divpsychic{
   position: relative;
-  background-color: rgba(26, 230, 43, 0.301);
+  background-color: rgba(248, 112, 160, 0.3);
   overflow: hidden;
 }
-
 .divpsychic:before{
 content: ' ';
 position: absolute;
@@ -505,10 +496,114 @@ width: 100%;
 height: 100%;
 z-index: -1;
 opacity: 0.3;
-background-image: url(../assets/img/psyco.png);
+background-image: url(../assets/img/psiquico.webp);
 background-repeat: no-repeat;
 background-size: cover;
 } 
+
+.divrock{
+  position: relative;
+  background-color: rgba(184, 160, 88, 0.30);
+  overflow: hidden;
+}
+.divrock:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/Icon_Roca.webp);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+.divdark{
+  position: relative;
+  background-color: 	rgb(122,88,72,0.3);
+  overflow: hidden;
+}
+.divdark:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/Icon_Siniestro.webp);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+.divground{
+  position: relative;
+  background-color: 	rgb(234,214,164,0.3);
+  overflow: hidden;
+}
+.divground:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/Icon_Tierra.webp);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+.divpoison{
+  position: relative;
+  background-color: 	rgb(176,88,160,0.3);
+  overflow: hidden;
+}
+.divpoison:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/Icon_Veneno.webp);
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.divflying{
+  position: relative;
+  background-color: 	rgb(152,168,240,0.3)  ;
+  overflow: hidden;
+}
+.divflying:before{
+content: ' ';
+position: absolute;
+overflow: hidden;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.3;
+background-image: url(../assets/img/Icon_Volador.webp);
+background-repeat: no-repeat;
+background-size: cover;
+} 
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
 
 
 

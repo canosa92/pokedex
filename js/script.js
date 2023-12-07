@@ -91,11 +91,11 @@ const pokemonNumero = async (nombrePokemon) => {
         <h4 class="medida">  ${peso}</h4>
         <h4 class="medida"> ${height}</h4>
         </div>
+         <div class="oculto">
+            <article>
         <div class="descripcion">
                 <p>${descripcionEspañol}</p>
                 </div>
-        <div class="oculto">
-            <article>
             <h3>Habilidades</h3>
                 <div class="habilidades">
                  ${habilidades}
