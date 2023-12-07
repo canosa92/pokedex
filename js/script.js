@@ -44,16 +44,23 @@ const pokemonNumero = async (nombrePokemon) => {
     ]);
     const arrayhabilidades = await detalle(pokemon.abilities)
     const habilidades= arrayhabilidades.map(habilidad =>`<div class="hab"><h4>${habilidad.nombre}</h4><p>${habilidad.descripcion}</p></div>`).join('')
-    console.log(arrayhabilidades)
+    
 
-    const descripcionEspañol = descripcionPokemon(descripcion.flavor_text_entries);
-    // Obtener detalles del Pokemon y la descripción
+
+ // Obtener detalles del Pokemon y la descripción
+    const descripcionEspañol = descripcionPokemon(descripcion.flavor_text_entries); 
     const name = pokemon.name.toUpperCase();
     const img = pokemon.sprites.other['official-artwork'].front_shiny;
     const id = pokemon.id;
-   
     const type = pokemon.types[0].type.name;
-    const types = pokemon.types.map((type) =>`<h4 class="tipo_texto ${type.type.name}">${type.type.name}<h4>`).join('   ');
+    //mapeamos los tipos de pokemon para traducirlos al español
+    const tiposEspañol = pokemon.types.map((tipo) =>{
+      const tipoNombre = tipo.type.name;
+  const tipoTraducido = traducirTipo(tipoNombre);
+  return `<h4 class="tipo_texto ${tipoNombre}">${tipoTraducido}</h4>`;
+}).join('   ');
+   
+    console.log(tiposEspañol)
     const estadisticas =pokemon.stats.map((stats)=>`<label for="${stats.stat.name}">${stats.stat.name}</label>
     <progress id="${stats.stat.name}" max="100" value="${stats.base_stat}">${stats.base_stat}</progress>`).join(' ');
     const peso = `${pokemon.weight / 10} kg`;
@@ -78,7 +85,7 @@ const pokemonNumero = async (nombrePokemon) => {
     </div>
    <div class="pokemon-info">
         <div class="tipos_Altura">
-        ${types}
+        ${tiposEspañol}
         </div>
         <div class="peso_altura">
         <h4 class="medida">  ${peso}</h4>
@@ -107,6 +114,30 @@ const pokemonNumero = async (nombrePokemon) => {
     console.error('Error al obtener detalles del Pokémon:', error);
   }
 };
+
+function traducirTipo(typeName){
+  const diccionarioTipos={
+    normal:'NORMAL',
+    fire:'FUEGO',
+    water:'AGUA',
+    electric:'ELECTRICO',
+    grass:'PLANTA',
+    ice:'HIELO',
+    fighting:'PELEA',
+    poison:'VENENO',
+    ground:'TIERRA',
+    flying:'VOLADOR',
+    psychic:'PSÍQUICO',
+    bug:'INSECTO',
+    rock:'ROCA',
+    ghost:'FANSTASMA',
+    dragon:'DRAGÓN',
+    dark:'SINIESTRO',
+    steel:'ACERO',
+    fairy:'HADA',
+  }
+  return diccionarioTipos[typeName];
+}
 
 function descripcionPokemon(flavortextentries) {
   const descripcionEspañol = flavortextentries.find(
