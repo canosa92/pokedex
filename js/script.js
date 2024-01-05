@@ -7,7 +7,7 @@ const nextBtn = document.getElementById('nextBtn');
 const visible = document.getElementById('app');
 const selector = document.getElementById('selector');
 const azar = document.getElementById('azarBtn');
-
+let divPokemon 
 let limite = 30;
 //creamos las variables para hacer la paginacion
 let paginaIncial = `https://pokeapi.co/api/v2/pokemon?limit=${limite}&offset=0`;
@@ -53,16 +53,17 @@ const pokemonNumero = async (nombrePokemon) => {
     const img = pokemon.sprites.other['official-artwork'].front_shiny;
     const id = pokemon.id;
     const type = pokemon.types[0].type.name;
+
     //mapeamos los tipos de pokemon para traducirlos al español
     const tiposEspañol = pokemon.types.map((tipo) =>{
       const tipoNombre = tipo.type.name;
   const tipoTraducido = traducirTipo(tipoNombre);
-  return `<h4 class="tipo_texto ${tipoNombre}">${tipoTraducido}</h4>`;
+  return `<h4 class="modal_ tipo tipo_texto ${tipoNombre} ">${tipoTraducido}</h4>`;
 }).join('   ');
-   
-    console.log(tiposEspañol)
+
     const estadisticas =pokemon.stats.map((stats)=>`<label for="${stats.stat.name}">${stats.stat.name}</label>
     <progress id="${stats.stat.name}" max="100" value="${stats.base_stat}">${stats.base_stat}</progress>`).join(' ');
+    
     const peso = `${pokemon.weight / 10} kg`;
     const height = `${pokemon.height / 10} mts`;
 
@@ -108,12 +109,87 @@ const pokemonNumero = async (nombrePokemon) => {
     </div>
         `;
 
+        contenedorPokemon.addEventListener('click',()=>{
+          if(window.innerWidth >768){
+          crearModal(descripcionEspañol,name,img,id,type,habilidades,tiposEspañol,estadisticas,peso,height)
+          }
+        })
     // Agregar el nuevo Pokémon al contenedor 'visible'
     visible.appendChild(contenedorPokemon);
   } catch (error) {
     console.error('Error al obtener detalles del Pokémon:', error);
   }
 };
+function crearModal(descripcionEspañol,name,img,id,type,habilidades,tiposEspañol,estadisticas,peso,height){
+  const modal = document.querySelector('.modal');
+  const modalPokemon = document.createElement('div');
+  modalPokemon.classList.add('modalPokemon', `div${type}`);
+  modal.innerHTML=''
+ modalPokemon.innerHTML=
+ ` <div class="basica_modal">
+        <div>
+          <h3>${id}.</h3>
+        </div>
+        <div>
+          <h3>${name}</h3>
+        </div>
+    </div>
+    <div class='modal_pokemon'>
+    <div class="modal_imagen">
+      <img src="${img}"/>
+      </div>
+      <div class='modal_info'>
+       <div class="modal_descripcion">
+      <p>${descripcionEspañol}</p>
+      </div>
+      <div class='modal_esta'>
+        <div class="modal_tipos">
+          <p>${tiposEspañol}</p>
+        </div>
+        <div class="modal_medidas">
+          <h4 class="m_medida">  ${peso}</h4>
+          <h4 class="m_medida"> ${height}</h4>
+        </div> 
+        </div>               
+        <div class='modal_masinfo'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="habModal">
+            <h3>Habilidades</h3>
+                
+                 ${habilidades}
+                 </div>
+            
+                 
+                <div class="estadisticas">
+                <h3>Estadisticas</h3>
+                    ${estadisticas}
+            </div>
+       </div>
+    </div>`
+    modal.appendChild(modalPokemon);
+}
 
 function traducirTipo(typeName){
   const diccionarioTipos={
