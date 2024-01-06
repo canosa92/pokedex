@@ -163,11 +163,16 @@ function crearModal(descripcionEspañol,name,img,id,type,habilidades,tiposEspañ
                     ${estadisticas}
             </div>
        </div>
-     <button>X</button>  
+     <button id='btnModal'>Cerrar</button>  
     </div>
     `
     modal.appendChild(modalPokemon);
+    const btnCerrarModal = modal.querySelector('#btnModal');
+  btnCerrarModal.addEventListener('click', () => {
+    modal.innerHTML='' // Oculta el modal al hacer clic en 'Cerrar'
+  });
 }
+
 
 function traducirTipo(typeName){
   const diccionarioTipos={
