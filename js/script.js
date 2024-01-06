@@ -45,7 +45,9 @@ const pokemonNumero = async (nombrePokemon) => {
     const arrayhabilidades = await detalle(pokemon.abilities)
     const habilidades= arrayhabilidades.map(habilidad =>`<div class="hab"><h4>${habilidad.nombre}</h4><p>${habilidad.descripcion}</p></div>`).join('')
     
-
+console.log(descripcion)
+const cadenaEvolutina=descripcion.evolution_chain.url;
+console.log(cadenaEvolutina)
 
  // Obtener detalles del Pokemon y la descripción
     const descripcionEspañol = descripcionPokemon(descripcion.flavor_text_entries); 
@@ -152,42 +154,18 @@ function crearModal(descripcionEspañol,name,img,id,type,habilidades,tiposEspañ
         </div> 
         </div>               
         <div class='modal_masinfo'>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="habModal">
             <h3>Habilidades</h3>
-                
                  ${habilidades}
                  </div>
-            
-                 
-                <div class="estadisticas">
+                <div class="modal_estadisticas">
                 <h3>Estadisticas</h3>
                     ${estadisticas}
             </div>
        </div>
-    </div>`
+     <button>X</button>  
+    </div>
+    `
     modal.appendChild(modalPokemon);
 }
 
