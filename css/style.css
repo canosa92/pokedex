@@ -1,10 +1,11 @@
 *{
   font-family: 'Roboto', sans-serif;
 }
-body {
+body,html {
   font-family: 'Noto Sans', sans-serif;
   background-color: #f2f2f2;
-  margin: 0;
+  margin: 30px;
+  height: 100%;
 }
 
 header {
@@ -72,10 +73,28 @@ header {
 
 /*creamos el estilo modal
 -----------------------------------------------*/
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top:0;
+  left:0;
+  bottom: 0;
+  border-radius: 8px;
+  border: solid 3px #797979;
+  box-shadow: 3px 3px 3px #797979;
+  transition: all 1s ease;
+
+}
 .modal_pokemon{
-display: flex;
-flex-direction: row;
-align-items: start;
+  display: flex;
+ flex-direction: row;
+  width:100%; /* Ajustar el ancho al 100% del modal */
+  height: 100%; /* Ajustar la altura al 100% del modal */
+  margin: 0; /* Eliminar márgenes internos del modal_pokemon */
+  padding: 0; /* Eliminar relleno interno del modal_pokemon */
+  box-sizing: border-box; /* Incluir el borde y el relleno en el tamaño total */
+  align-items: start;
 }
 .basica_modal{
   display: flex;
@@ -166,6 +185,26 @@ margin: -35px 60px 0px 0px;
   width: 175px;
   height: 22px;
 }
+.btn{
+  display: flex;
+  justify-content: center;
+}
+#btnModal{
+  text-transform: uppercase;
+  border: 3px black solid;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100px;
+  box-shadow: 4px 4px 2px 2px  rgb(97, 96, 96);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  #btnModal:hover {
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#c7be44));
+    background: -moz-linear-gradient(top, #ffffff, #c7be44)
+  }
+
 /*Vamos a dar estilo a la caja de pokemon que se pinta 
 desde el javascript
 -----------------------------------------------------*/

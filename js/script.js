@@ -7,6 +7,7 @@ const nextBtn = document.getElementById('nextBtn');
 const visible = document.getElementById('app');
 const selector = document.getElementById('selector');
 const azar = document.getElementById('azarBtn');
+const modal = document.querySelector('.modal');
 let divPokemon 
 let limite = 30;
 //creamos las variables para hacer la paginacion
@@ -123,18 +124,20 @@ console.log(cadenaEvolutina)
   }
 };
 function crearModal(descripcionEspañol,name,img,id,type,habilidades,tiposEspañol,estadisticas,peso,height){
-  const modal = document.querySelector('.modal');
+  
   const modalPokemon = document.createElement('div');
-  modalPokemon.classList.add('modalPokemon', `div${type}`);
+  modalPokemon.classList.add('modal_pokemon', `div${type}`);
   modal.innerHTML=''
  modalPokemon.innerHTML=
- ` <div class="basica_modal">
+ ` <div>
+ <div class="basica_modal">
         <div>
           <h3>${id}.</h3>
         </div>
         <div>
           <h3>${name}</h3>
         </div>
+       
     </div>
     <div class='modal_pokemon'>
     <div class="modal_imagen">
@@ -162,14 +165,17 @@ function crearModal(descripcionEspañol,name,img,id,type,habilidades,tiposEspañ
                 <h3>Estadisticas</h3>
                     ${estadisticas}
             </div>
-       </div>
-     <button id='btnModal'>Cerrar</button>  
-    </div>
+       </div> <div class="btn">
+        <button id='btnModal'>Cerrar </button>  
+        </div>
+   </div>
+    </div
     `
+    modal.style.display = 'flex'
     modal.appendChild(modalPokemon);
     const btnCerrarModal = modal.querySelector('#btnModal');
-  btnCerrarModal.addEventListener('click', () => {
-    modal.innerHTML='' // Oculta el modal al hacer clic en 'Cerrar'
+  btnCerrarModal.addEventListener('click', () => { // Oculta el modal al hacer clic en 'Cerrar'
+    modal.style.display = 'none'
   });
 }
 
