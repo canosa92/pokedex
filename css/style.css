@@ -4,7 +4,7 @@
 body,html {
   font-family: 'Noto Sans', sans-serif;
   background-color: #f2f2f2;
-  margin: 30px;
+  margin: 0px;
   height: 100%;
 }
 
@@ -84,6 +84,7 @@ header {
   border: solid 3px #797979;
   box-shadow: 3px 3px 3px #797979;
   transition: all 1s ease;
+  background-color: beige;
 
 }
 .modal_pokemon{

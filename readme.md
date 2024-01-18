@@ -1,38 +1,35 @@
 # Creación de una Pokédex con HTML, CSS y JavaScript
+Este proyecto es un ejercicio del Bootcamo
 
 En este ejercicio, construiremos una Pokédex básica utilizando HTML, CSS y JavaScript. La Pokédex mostrará una lista de Pokémon obtenidos de la API pública de Pokémon. Los usuarios podrán navegar entre las páginas de Pokémon, buscar Pokémon específicos y ver detalles básicos de cada uno.
 
-FYI: La pokedex es el listado de todos los pokemon con sus nombres e imagenes. Puedes añadir más cosas si quieres.
-
 ## Pasos del Ejercicio
-
-### Paso 1: Estructura HTML
-- El HTML ya está creado `index.html`. Tiene cosas básicas para empezar.
-
-### Paso 2: Estilo CSS
-- Ya está creadas las CSS básicas `style.css`.
-- Personaliza los estilos según tus preferencias.
-
-### Paso 3: Lógica JavaScript
-- En `script.js` harás toda la lógica del programa.
-- La URL base es la siguiente `https://pokeapi.co/api/v2/pokemon`
-- Implementa la lógica para interactuar con la API de Pokémon.
-- Gestiona la paginación para mostrar diferentes conjuntos de Pokémon. De 10 en 10. añadir esto a la url más otras cosas puede limitar la cantidad `?limit=`
-- Permite la búsqueda de Pokémon por nombre. Si no exite deberá aparecer un mensaje de "pokemon no encontrado"
-- Mira como aceder al pokemon por nombre en la documentación.
-- Maneja eventos de botones y actualiza dinámicamente la interfaz.
-- aquí la documentación de pokemon `https://pokeapi.co/docs/v2`
-
-### Paso 4: Mejoras Adicionales
-- Agrega estilos adicionales.
-- Mejora la interactividad de la aplicación.
-- Personaliza la presentación de la información de Pokémon.
 
 debe quedar algo similar a esto:
 ![pokedex](./assets/img/pokedex.png)
 
-### BONUS
-- Crea una segunda página donde se guarden tus pokemon favoritos.
-- Al clickar en un pokemon en index.html este tendrá que guardarse en localStorage y en la otra página saldrán esos pokemon que se han guardado previamente
-- Cada pokemon, si se ha añadido a favoritos `localStorage`, tendrá que tener una marca como que ya está añadido. Si se vuelve a clickar desaparcera la marca y de favoritos `localStorage`
-- Puedes usar un script nuevo que solo traiga esos pokemon de favoritos
+## Funciones a mayores
+### Boton de Azar
+
+Con este boton conseguimos que se nos genere los pokemon y su informacion de forma aleatoria. Podemos escoger cuandos pokemons queremos que se nos genere.
+
+![azar](./assets/pantallazos/azar.png)
+
+## Mas información y estilo 
+
+Aparte de añadir una imagen de fondo (imagen de los tipos de pokemon en Pokemon Go), tambien se cambia de imagen (optando por una imagen shiny), el id y por ultimo las medidas.
+
+![home](./assets/pantallazos/home.png)
+
+## Modal
+
+Al hacer click sobre las distintas cartas de pokemon nos aparece un modal, donde obtenemos más informacion y segun el dispositivo donde los veamos nos aparece de una forma u otra(buscando un diseño responsive). Esta infomación adiccional  consta de una descricpión del pokemon, sus estadisticas, sus habilidades y un boton de cierre.
+
+![modal](./assets/pantallazos/modal.png)
+![movil](./assets/pantallazos/movil.png)
+
+## Nombre de todos los pokemon
+
+Hay muy poca gente que se sepa todos los nombres de los más de 1000 pokemons que hay, por eso en el pie de pagina aparece una lista de todos los pokemon que hay, con tan solo clickar sobre el nombre ya nos hace una busqueda automatica y podemos obtener la información sobre dicho pokemon.
+
+![nombres](./assets/pantallazos/nombres.png)
