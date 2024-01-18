@@ -33,3 +33,6 @@ Al hacer click sobre las distintas cartas de pokemon nos aparece un modal, donde
 Hay muy poca gente que se sepa todos los nombres de los más de 1000 pokemons que hay, por eso en el pie de pagina aparece una lista de todos los pokemon que hay, con tan solo clickar sobre el nombre ya nos hace una busqueda automatica y podemos obtener la información sobre dicho pokemon.
 
 ![nombres](./assets/pantallazos/nombres.png)
+
+
+Si teneis cualquier duda, sujerencia o si quereis correguir el codigo, mejorarlo o hacer un fork, sentiros libres.
